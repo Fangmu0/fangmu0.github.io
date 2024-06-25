@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>本地总结</title>
+    <link href="/2024/06/25/hexo%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/"/>
+    <url>/2024/06/25/hexo%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="关于Hexo博客常用的命令"><a href="#关于Hexo博客常用的命令" class="headerlink" title="关于Hexo博客常用的命令"></a>关于Hexo博客常用的命令</h1><p>1、清理缓存</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo clean</span><br></code></pre></td></tr></table></figure><p>2、重新生成文件</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br></code></pre></td></tr></table></figure><p>3、开启本地服务</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure><p>4、上传GitHub</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2024/06/24/hello-world/"/>
     <url>/2024/06/24/hello-world/</url>
