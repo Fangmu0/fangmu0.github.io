@@ -16,22 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于Hexo博客常用的命令1、清理缓存 1hexo clean  2、重新生成文件 1hexo g  3、开启本地服务 1hexo s  4、上传GitHub 1hexo d">
+    <meta name="description" content="Visual Studio 运行项目无法弹出页面问题在完成项目编码后，准备运行看看页面，但是总是无法弹窗，日志中也没有报错，在app中修改主页面为其他页面时可以正常运行，因此判断为程序有bug；开始排查： ​	发现在.xaml页面中写了一个TabControl，此时给他设定被选择的标签是0，他会触发SelectionChanged中的方法，在该方法中，当标签发生变化时，会触发Frame.Conte">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo命令合集">
-<meta property="og:url" content="http://example.com/2024/06/25/hexo%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/index.html">
+<meta property="og:title" content="Visual Studio 运行项目无法弹出页面问题">
+<meta property="og:url" content="http://example.com/2024/06/26/visual%20studio%20%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE%E6%97%A0%E6%B3%95%E5%BC%B9%E5%87%BA%E9%A1%B5%E9%9D%A2%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="关于Hexo博客常用的命令1、清理缓存 1hexo clean  2、重新生成文件 1hexo g  3、开启本地服务 1hexo s  4、上传GitHub 1hexo d">
+<meta property="og:description" content="Visual Studio 运行项目无法弹出页面问题在完成项目编码后，准备运行看看页面，但是总是无法弹窗，日志中也没有报错，在app中修改主页面为其他页面时可以正常运行，因此判断为程序有bug；开始排查： ​	发现在.xaml页面中写了一个TabControl，此时给他设定被选择的标签是0，他会触发SelectionChanged中的方法，在该方法中，当标签发生变化时，会触发Frame.Conte">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-06-25T01:08:00.000Z">
-<meta property="article:modified_time" content="2024-06-25T01:21:59.456Z">
+<meta property="article:published_time" content="2024-06-26T05:56:00.000Z">
+<meta property="article:modified_time" content="2024-06-26T06:11:50.829Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Hexo 总结">
+<meta property="article:tag" content="wpf">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>hexo命令合集 - Hexo</title>
+  <title>Visual Studio 运行项目无法弹出页面问题 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hexo命令合集"></span>
+            <span id="subtitle" data-typed-text="Visual Studio 运行项目无法弹出页面问题"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-25 09:08" pubdate>
-          June 25, 2024 am
+        <time datetime="2024-06-26 13:56" pubdate>
+          June 26, 2024 pm
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          32 words
+          318 words
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          1 mins
+          3 mins
         
       </span>
     
@@ -268,23 +268,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">hexo命令合集</h1>
+            <h1 id="seo-header">Visual Studio 运行项目无法弹出页面问题</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="关于Hexo博客常用的命令"><a href="#关于Hexo博客常用的命令" class="headerlink" title="关于Hexo博客常用的命令"></a>关于Hexo博客常用的命令</h1><p>1、清理缓存</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo clean</span><br></code></pre></td></tr></table></figure>
+                <h1 id="Visual-Studio-运行项目无法弹出页面问题"><a href="#Visual-Studio-运行项目无法弹出页面问题" class="headerlink" title="Visual Studio 运行项目无法弹出页面问题"></a>Visual Studio 运行项目无法弹出页面问题</h1><p>在完成项目编码后，准备运行看看页面，但是总是无法弹窗，日志中也没有报错，在app中修改主页面为其他页面时可以正常运行，因此判断为程序有bug；开始排查：</p>
+<p>​	发现在.xaml页面中写了一个TabControl，此时给他设定被选择的标签是0，他会触发SelectionChanged中的方法，在该方法中，当标签发生变化时，会触发Frame.Content方法进行切换页面，而Frame还未被初始化，导致程序bug无法加载页面；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs xaml">&lt;hc:TabControl<br>    Name=&quot;tc_item&quot;<br>    Grid.Row=&quot;0&quot;<br>    SelectedIndex=&quot;0&quot;<br>    SelectionChanged=&quot;Page_Changed&quot;<br>    Style=&quot;&#123;StaticResource TabControlBaseStyle&#125;&quot;<br>    TabItemHeight=&quot;200&quot;<br>    TabItemWidth=&quot;200&quot;<br>    TabStripPlacement=&quot;Top&quot;&gt;<br>    &lt;hc:TabItem&gt;<br>        &lt;TabItem.Header&gt;<br>            &lt;DockPanel&gt;<br>                &lt;Image<br>                    Width=&quot;10&quot;<br>                    Height=&quot;10&quot;<br>                    Source=&quot;../png/dec.png&quot; /&gt;<br>                &lt;TextBlock Text=&quot;主页&quot; /&gt;<br>            &lt;/DockPanel&gt;<br>        &lt;/TabItem.Header&gt;<br>    &lt;/hc:TabItem&gt;<br>    &lt;hc:TabItem Header=&quot;选项卡2&quot; /&gt;<br>    &lt;hc:TabItem Header=&quot;选项卡3&quot; /&gt;<br>&lt;/hc:TabControl&gt;<br></code></pre></td></tr></table></figure>
 
-<p>2、重新生成文件</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Page_Changed</span>(<span class="hljs-params"><span class="hljs-built_in">object</span> sender, SelectionChangedEventArgs e</span>)</span><br>&#123;<br>    <span class="hljs-built_in">int</span> index = tc_item.SelectedIndex;<br>    <span class="hljs-keyword">switch</span> (index)<br>    &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>            mFrame.Content = <span class="hljs-keyword">new</span> Page1();<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            mFrame.Content = <span class="hljs-keyword">new</span> Page2();<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>   <br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>3、开启本地服务</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure>
-
-<p>4、上传GitHub</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure>
-
+<p>​	若想设置初始选择标签index不为0，需在代码中初始化之后设置SelectedIndex&#x3D;其他即可。</p>
 
                 
               </div>
@@ -297,7 +292,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Hexo-%E6%80%BB%E7%BB%93/" class="print-no-link">#Hexo 总结</a>
+        <a href="/tags/wpf/" class="print-no-link">#wpf</a>
       
     </div>
   
@@ -309,8 +304,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hexo命令合集</div>
-      <div>http://example.com/2024/06/25/hexo命令合集/</div>
+      <div>Visual Studio 运行项目无法弹出页面问题</div>
+      <div>http://example.com/2024/06/26/visual studio 运行项目无法弹出页面问题/</div>
     </div>
     <div class="license-meta">
       
@@ -322,7 +317,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>June 25, 2024</div>
+          <div>June 26, 2024</div>
         </div>
       
       
@@ -354,18 +349,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/26/visual%20studio%20%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE%E6%97%A0%E6%B3%95%E5%BC%B9%E5%87%BA%E9%A1%B5%E9%9D%A2%E9%97%AE%E9%A2%98/" title="Visual Studio 运行项目无法弹出页面问题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Visual Studio 运行项目无法弹出页面问题</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/24/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2024/06/25/hexo%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/" title="hexo命令合集">
+                        <span class="hidden-mobile">hexo命令合集</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

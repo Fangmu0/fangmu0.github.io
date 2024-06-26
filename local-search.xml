@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Visual Studio 运行项目无法弹出页面问题</title>
+    <link href="/2024/06/26/visual%20studio%20%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE%E6%97%A0%E6%B3%95%E5%BC%B9%E5%87%BA%E9%A1%B5%E9%9D%A2%E9%97%AE%E9%A2%98/"/>
+    <url>/2024/06/26/visual%20studio%20%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE%E6%97%A0%E6%B3%95%E5%BC%B9%E5%87%BA%E9%A1%B5%E9%9D%A2%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Visual-Studio-运行项目无法弹出页面问题"><a href="#Visual-Studio-运行项目无法弹出页面问题" class="headerlink" title="Visual Studio 运行项目无法弹出页面问题"></a>Visual Studio 运行项目无法弹出页面问题</h1><p>在完成项目编码后，准备运行看看页面，但是总是无法弹窗，日志中也没有报错，在app中修改主页面为其他页面时可以正常运行，因此判断为程序有bug；开始排查：</p><p>​发现在.xaml页面中写了一个TabControl，此时给他设定被选择的标签是0，他会触发SelectionChanged中的方法，在该方法中，当标签发生变化时，会触发Frame.Content方法进行切换页面，而Frame还未被初始化，导致程序bug无法加载页面；</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs xaml">&lt;hc:TabControl<br>    Name=&quot;tc_item&quot;<br>    Grid.Row=&quot;0&quot;<br>    SelectedIndex=&quot;0&quot;<br>    SelectionChanged=&quot;Page_Changed&quot;<br>    Style=&quot;&#123;StaticResource TabControlBaseStyle&#125;&quot;<br>    TabItemHeight=&quot;200&quot;<br>    TabItemWidth=&quot;200&quot;<br>    TabStripPlacement=&quot;Top&quot;&gt;<br>    &lt;hc:TabItem&gt;<br>        &lt;TabItem.Header&gt;<br>            &lt;DockPanel&gt;<br>                &lt;Image<br>                    Width=&quot;10&quot;<br>                    Height=&quot;10&quot;<br>                    Source=&quot;../png/dec.png&quot; /&gt;<br>                &lt;TextBlock Text=&quot;主页&quot; /&gt;<br>            &lt;/DockPanel&gt;<br>        &lt;/TabItem.Header&gt;<br>    &lt;/hc:TabItem&gt;<br>    &lt;hc:TabItem Header=&quot;选项卡2&quot; /&gt;<br>    &lt;hc:TabItem Header=&quot;选项卡3&quot; /&gt;<br>&lt;/hc:TabControl&gt;<br></code></pre></td></tr></table></figure><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Page_Changed</span>(<span class="hljs-params"><span class="hljs-built_in">object</span> sender, SelectionChangedEventArgs e</span>)</span><br>&#123;<br>    <span class="hljs-built_in">int</span> index = tc_item.SelectedIndex;<br>    <span class="hljs-keyword">switch</span> (index)<br>    &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>            mFrame.Content = <span class="hljs-keyword">new</span> Page1();<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            mFrame.Content = <span class="hljs-keyword">new</span> Page2();<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>   <br>&#125;<br></code></pre></td></tr></table></figure><p>​若想设置初始选择标签index不为0，需在代码中初始化之后设置SelectedIndex&#x3D;其他即可。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>wpf</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>hexo命令合集</title>
     <link href="/2024/06/25/hexo%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/"/>
     <url>/2024/06/25/hexo%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/</url>
