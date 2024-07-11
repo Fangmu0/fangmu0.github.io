@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1、获取文件存储权限在清单文件中添加权限获取 12&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_EXTERNAL_STORAGE&quot; &#x2F;&gt;&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_EXTERNAL_STORAGE&amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 中文件存储的使用">
+<meta property="og:url" content="http://example.com/2024/07/11/Android%20%E4%B8%AD%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、获取文件存储权限在清单文件中添加权限获取 12&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_EXTERNAL_STORAGE&quot; &#x2F;&gt;&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_EXTERNAL_STORAGE&amp;quo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-11T06:41:50.000Z">
+<meta property="article:modified_time" content="2024-07-11T07:16:11.038Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Android学习">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Android 中文件存储的使用 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>刘玉龙的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Android 中文件存储的使用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-11 14:41" pubdate>
+          July 11, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          579 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Android 中文件存储的使用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="1、获取文件存储权限"><a href="#1、获取文件存储权限" class="headerlink" title="1、获取文件存储权限"></a>1、获取文件存储权限</h2><p>在清单文件中添加权限获取</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>还需要动态获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (Build.VERSION.SDK_INT &gt;= <span class="hljs-number">23</span>) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">REQUEST_CODE_PERMISSION</span> <span class="hljs-operator">=</span> <span class="hljs-number">111</span>;<br>            String[] permissions = &#123;<br>                    Manifest.permission.READ_EXTERNAL_STORAGE,<br>                    Manifest.permission.WRITE_EXTERNAL_STORAGE,<br>                    Manifest.permission.INTERNET,<br>                    Manifest.permission.ACCESS_NETWORK_STATE,<br>                    Manifest.permission.ACCESS_WIFI_STATE<br>            &#125;;<br><br>            <span class="hljs-keyword">for</span> (String str : permissions) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) &#123;<br>                    <span class="hljs-built_in">this</span>.requestPermissions(permissions, REQUEST_CODE_PERMISSION);<br>                    hasPermission = <span class="hljs-literal">false</span>;<br>                    <span class="hljs-keyword">return</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2、创建存储文件夹"><a href="#2、创建存储文件夹" class="headerlink" title="2、创建存储文件夹"></a>2、创建存储文件夹</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-comment">//创建目录，保存配置文件，存放数据库等</span><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">createSysPath</span><span class="hljs-params">(Context context)</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">PrePath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span>;<br>    PrePath = getFileRoot(context);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">filePath</span> <span class="hljs-operator">=</span> PrePath + File.separator + <span class="hljs-string">&quot;Test&quot;</span>;<br>    <span class="hljs-type">File</span> <span class="hljs-variable">localFile</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(filePath);<br>    <span class="hljs-keyword">if</span> (!localFile.exists()) &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">boolean</span> <span class="hljs-variable">re</span> <span class="hljs-operator">=</span> localFile.mkdirs();<br>            <span class="hljs-keyword">if</span> (PubConst.IfDebug)<br>                Log.i(<span class="hljs-string">&quot;createSysPath&quot;</span>, <span class="hljs-string">&quot;createSysPath: 不存在&quot;</span> + filePath + <span class="hljs-string">&quot;，创建&quot;</span> + re);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            <span class="hljs-keyword">if</span> (PubConst.IfDebug)<br>                Log.i(<span class="hljs-string">&quot;createSysPath&quot;</span>, <span class="hljs-string">&quot;createSysPath: &quot;</span> + e.getMessage().toString());<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">if</span> (PubConst.IfDebug) Log.i(<span class="hljs-string">&quot;createSysPath&quot;</span>, <span class="hljs-string">&quot;createSysPath:存在 &quot;</span> + filePath);<br>    &#125;<br>    <span class="hljs-keyword">return</span> filePath;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>getFileRoot()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//获取根目录</span><br>   <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getFileRoot</span><span class="hljs-params">(Context context)</span> &#123;<br>       <span class="hljs-keyword">if</span> (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;<br>           <span class="hljs-type">File</span> <span class="hljs-variable">external</span> <span class="hljs-operator">=</span> context.getExternalFilesDir(<span class="hljs-literal">null</span>);<br>           <span class="hljs-keyword">if</span> (external != <span class="hljs-literal">null</span>) &#123;<br>               <span class="hljs-keyword">return</span> external.getAbsolutePath();<br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">return</span> context.getFilesDir().getAbsolutePath();<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3、将数据写入文件"><a href="#3、将数据写入文件" class="headerlink" title="3、将数据写入文件"></a>3、将数据写入文件</h2><p>使用Properties方式，以文本文件读写配置，比SharedPreferences更灵活</p>
+<p>其实就是键值对的方式，NodeName是key，NodeValue代表value，一对一存储，且一个文件可以存储多个键值对；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java">    <span class="hljs-comment">//&lt;editor-fold desc=&quot;读写配置文件（Properties）&quot;&gt;</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">writeConfig</span><span class="hljs-params">(String FilePath, String NodeName, String NodeValue, String FileName)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">ConfigFileName</span> <span class="hljs-operator">=</span> FilePath + <span class="hljs-string">&quot;/Test/&quot;</span> + FileName;<br>            <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(ConfigFileName);<br>            <span class="hljs-keyword">if</span> (!file.exists()) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    file.createNewFile();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    Log.i(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;writeConfig: &quot;</span> + e.getMessage().toString());<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br><br>            <span class="hljs-type">Properties</span> <span class="hljs-variable">properties</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Properties</span>();<br>            <span class="hljs-type">FileInputStream</span> <span class="hljs-variable">fs</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(ConfigFileName);<br>            properties.load(fs);<br>            properties.setProperty(NodeName, NodeValue);<br>            <span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">fo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(ConfigFileName);<br>            properties.store(fo, <span class="hljs-string">&quot;Update &#x27;&quot;</span> + NodeName + <span class="hljs-string">&quot;&#x27; value&quot;</span>);<br>            fo.close();<br>            fs.close();<br><span class="hljs-comment">//            Log.i(&quot;TAG&quot;,&quot;写入Config &quot;+NodeName+&quot;=&quot;+NodeValue);</span><br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            Log.i(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;写入Config错误: &quot;</span> + e.getMessage().toString());<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4、读取数据"><a href="#4、读取数据" class="headerlink" title="4、读取数据"></a>4、读取数据</h2><p>从文件中读取数据方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">readConfig</span><span class="hljs-params">(String FilePath, String NodeName, String FileName)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">ConfigFileName</span> <span class="hljs-operator">=</span> FilePath + <span class="hljs-string">&quot;/Test/&quot;</span> + FileName;<br>            <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(ConfigFileName);<br>            <span class="hljs-keyword">if</span> (!file.exists()) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    file.createNewFile();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br><br>            <span class="hljs-type">Properties</span> <span class="hljs-variable">properties</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Properties</span>();<br>            <span class="hljs-type">FileInputStream</span> <span class="hljs-variable">fs</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(ConfigFileName);<br>            properties.load(fs);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">NodeValue</span> <span class="hljs-operator">=</span> properties.getProperty(NodeName);<br>            fs.close();<br><br>            <span class="hljs-keyword">if</span> (NodeValue.isEmpty()) &#123;<br>                NodeValue = <span class="hljs-string">&quot;0&quot;</span>;<br>            &#125;<br><br>            <span class="hljs-keyword">return</span> NodeValue;<br>        &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">final</span> Exception e) &#123;<br>            Log.i(<span class="hljs-string">&quot;TAG&quot;</span>, <span class="hljs-string">&quot;读取Config错误: &quot;</span> + e.getMessage().toString());<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="5、使用"><a href="#5、使用" class="headerlink" title="5、使用"></a>5、使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">writeConfig(getFileRoot(getApplicationContext()), <span class="hljs-string">&quot;IP&quot;</span>, <span class="hljs-string">&quot;192.168.1&quot;</span>, <span class="hljs-string">&quot;config.txt&quot;</span>)<br>readConfig(getFileRoot(getApplicationContext()), <span class="hljs-string">&quot;IP&quot;</span>, <span class="hljs-string">&quot;config.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="6、查看"><a href="#6、查看" class="headerlink" title="6、查看"></a>6、查看</h2><p>最终可以在&#x2F;sdcard&#x2F;Android&#x2F;data&#x2F;com.XXX.XXX&#x2F;files&#x2F;Test中查看</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Android%E5%AD%A6%E4%B9%A0/" class="print-no-link">#Android学习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Android 中文件存储的使用</div>
+      <div>http://example.com/2024/07/11/Android 中文件存储/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 11, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/11/android%20ADB%20%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/" title="Android 中adb命令的安装与使用">
+                        <span class="hidden-mobile">Android 中adb命令的安装与使用</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
