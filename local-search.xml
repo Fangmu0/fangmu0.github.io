@@ -4,6 +4,38 @@
   
   
   <entry>
+    <title>自定义BaseDialog</title>
+    <link href="/2024/07/13/%E8%87%AA%E5%AE%9A%E4%B9%89BaseDialog/"/>
+    <url>/2024/07/13/%E8%87%AA%E5%AE%9A%E4%B9%89BaseDialog/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Android 重新启动的方法</title>
+    <link href="/2024/07/12/Android-%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <url>/2024/07/12/Android-%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Android中杀死进程重新启动的方法"><a href="#Android中杀死进程重新启动的方法" class="headerlink" title="Android中杀死进程重新启动的方法"></a>Android中杀死进程重新启动的方法</h1><h2 id="一、直接方法"><a href="#一、直接方法" class="headerlink" title="一、直接方法"></a>一、直接方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">final</span> <span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> getActivity().getPackageManager().getLaunchIntentForPackage(getActivity().getPackageName());<br>intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);<br>getActivity().startActivity(intent);<br>android.os.Process.killProcess(android.os.Process.myPid());<br></code></pre></td></tr></table></figure><h2 id="二、其他技术"><a href="#二、其他技术" class="headerlink" title="二、其他技术"></a>二、其他技术</h2><p>一个开源的技术，GitHub地址：<a href="https://github.com/JakeWharton/ProcessPhoenix">JakeWharton&#x2F;ProcessPhoenix: Process Phoenix facilitates restarting your application process</a></p><p>具体的实现原理可参考[<a href="https://juejin.cn/post/7207743145999024165">崩溃] Android应用自动重启</a>这篇文章。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Android 技术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Android 中文件存储的使用</title>
     <link href="/2024/07/11/Android%20%E4%B8%AD%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/"/>
     <url>/2024/07/11/Android%20%E4%B8%AD%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/</url>
@@ -14,9 +46,9 @@
     
     <tags>
       
-      <tag>Android</tag>
-      
       <tag>Android技术学习</tag>
+      
+      <tag>Android</tag>
       
     </tags>
     
@@ -35,9 +67,9 @@
     
     <tags>
       
-      <tag>Android</tag>
-      
       <tag>Android技术学习</tag>
+      
+      <tag>Android</tag>
       
       <tag>adb命令</tag>
       
