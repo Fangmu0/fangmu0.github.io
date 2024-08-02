@@ -16,22 +16,19 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="个人自用的BaseDialog，可自行修改，若想使用databinding，可以将getRootView()方法的返回值修改为View，继承类返回binding.getRoot()方法即可。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556">
-<meta property="og:type" content="article">
-<meta property="og:title" content="自定义BaseDialog">
-<meta property="og:url" content="http://example.com/2024/07/13/%E8%87%AA%E5%AE%9A%E4%B9%89BaseDialog/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Java\C#实现CRC16算法">
+<meta property="og:url" content="http://example.com/2024/08/02/Java-C#%E5%AE%9E%E7%8E%B0CRC16%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="个人自用的BaseDialog，可自行修改，若想使用databinding，可以将getRootView()方法的返回值修改为View，继承类返回binding.getRoot()方法即可。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-07-13T02:48:58.000Z">
-<meta property="article:modified_time" content="2024-07-16T02:42:51.626Z">
+<meta property="article:published_time" content="2024-08-02T03:45:47.000Z">
+<meta property="article:modified_time" content="2024-08-02T03:45:47.712Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Android 技术">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>自定义BaseDialog - Hexo</title>
+  <title>Java\C#实现CRC16算法 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="自定义BaseDialog"></span>
+            <span id="subtitle" data-typed-text="Java\C#实现CRC16算法"></span>
           
         </div>
 
@@ -208,8 +205,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-13 10:48" pubdate>
-          July 13, 2024 am
+        <time datetime="2024-08-02 11:45" pubdate>
+          August 2, 2024 am
         </time>
       </span>
     
@@ -220,7 +217,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          279 words
+          0 words
         
       </span>
     
@@ -231,7 +228,7 @@
         
         
         
-          3 mins
+          1 mins
         
       </span>
     
@@ -268,15 +265,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">自定义BaseDialog</h1>
+            <h1 id="seo-header">Java\C#实现CRC16算法</h1>
             
             
               <div class="markdown-body">
                 
-                <p> 个人自用的BaseDialog，可自行修改，若想使用databinding，可以将getRootView()方法的返回值修改为View，继承类返回binding.getRoot()方法即可。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BaseDialog</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Dialog</span> &#123;<br>    <span class="hljs-keyword">public</span> Context context;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">BaseDialog</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Context context)</span> &#123;<br>        <span class="hljs-built_in">this</span>(context, R.style.CommonDialogStyle);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">BaseDialog</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Context context, <span class="hljs-type">int</span> themeResId)</span> &#123;<br>        <span class="hljs-built_in">super</span>(context, themeResId);<br>        <span class="hljs-built_in">this</span>.context = context;<br>        setContentView(getRootView());<br>        setCanceledOnTouchOutside(<span class="hljs-literal">true</span>);<br>        setCancelable(<span class="hljs-literal">true</span>);<br>        onClick();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getRootView</span><span class="hljs-params">()</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClick</span><span class="hljs-params">()</span>;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">dispatchTouchEvent</span><span class="hljs-params">(MotionEvent event)</span> &#123;<br>        <span class="hljs-keyword">if</span> (event.getAction() == MotionEvent.ACTION_DOWN &amp;&amp;<br>                getCurrentFocus() != <span class="hljs-literal">null</span> &amp;&amp;<br>                getCurrentFocus().getWindowToken() != <span class="hljs-literal">null</span>) &#123;<br><br>            <span class="hljs-type">View</span> <span class="hljs-variable">v</span> <span class="hljs-operator">=</span> getCurrentFocus();<br>            <span class="hljs-keyword">if</span> (isShouldHideKeyboard(v, event)) &#123;<br>                hideKeyboard(v.getWindowToken());<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.dispatchTouchEvent(event);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 根据EditText所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘，因为当用户点击EditText时则不能隐藏</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isShouldHideKeyboard</span><span class="hljs-params">(View v, MotionEvent event)</span> &#123;<br>        <span class="hljs-keyword">if</span> (v <span class="hljs-keyword">instanceof</span> EditText) &#123;<br>            <span class="hljs-type">int</span>[] l = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;;<br>            v.getLocationOnScreen(l);<br>            <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> l[<span class="hljs-number">0</span>],<br>                    top = l[<span class="hljs-number">1</span>],<br>                    bottom = top + v.getHeight(),<br>                    right = left + v.getWidth();<br>            <span class="hljs-comment">// 点击EditText的事件，忽略它。</span><br>            <span class="hljs-keyword">return</span> !(event.getRawX() &gt; left) || !(event.getRawX() &lt; right)<br>                    || !(event.getRawY() &gt; top) || !(event.getRawY() &lt; bottom);<br>        &#125;<br>        <span class="hljs-comment">// 如果焦点不是EditText则忽略，这个发生在视图刚绘制完，第一个焦点不在EditText上，和用户用轨迹球选择其他的焦点</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取InputMethodManager，隐藏软键盘</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hideKeyboard</span><span class="hljs-params">(IBinder token)</span> &#123;<br>        <span class="hljs-keyword">if</span> (token != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">InputMethodManager</span> <span class="hljs-variable">mInputMethodManager</span> <span class="hljs-operator">=</span> (InputMethodManager) getContext().getSystemService(INPUT_METHOD_SERVICE);<br>            mInputMethodManager.hideSoftInputFromWindow(token, InputMethodManager.HIDE_NOT_ALWAYS);<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-
-
+                
                 
               </div>
             
@@ -284,13 +278,6 @@
             <div>
               <div class="post-metas my-3">
   
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Android-%E6%8A%80%E6%9C%AF/" class="print-no-link">#Android 技术</a>
-      
-    </div>
   
 </div>
 
@@ -300,8 +287,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>自定义BaseDialog</div>
-      <div>http://example.com/2024/07/13/自定义BaseDialog/</div>
+      <div>Java\C#实现CRC16算法</div>
+      <div>http://example.com/2024/08/02/Java-C#实现CRC16算法/</div>
     </div>
     <div class="license-meta">
       
@@ -313,7 +300,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>July 13, 2024</div>
+          <div>August 2, 2024</div>
         </div>
       
       
@@ -345,7 +332,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/02/Java-C#%E5%AE%9E%E7%8E%B0CRC16%E7%AE%97%E6%B3%95/" title="Java\C#实现CRC16算法">
+                      <a href="/2024/08/02/Java-C-%E5%AE%9E%E7%8E%B0CRC16%E7%AE%97%E6%B3%95/" title="Java\C#实现CRC16算法">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Java\C#实现CRC16算法</span>
                         <span class="visible-mobile">Previous</span>
@@ -355,8 +342,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/12/Android-%E9%87%8D%E6%96%B0%E5%90%AF%E5%8A%A8%E7%9A%84%E6%96%B9%E6%B3%95/" title="Android 重新启动的方法">
-                        <span class="hidden-mobile">Android 重新启动的方法</span>
+                      <a href="/2024/07/13/%E8%87%AA%E5%AE%9A%E4%B9%89BaseDialog/" title="自定义BaseDialog">
+                        <span class="hidden-mobile">自定义BaseDialog</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
